@@ -12,7 +12,16 @@ In the project directory, you can run:
 3. react-photo-view
 4. react fond awesome icons
 5. firebase Authentication
+6. react-router-dom
+7. environment variabled
+8. mongodb
 
+## Add Features
+1. login, registration, authentication
+2. Add Most Powerful React Router dom
+3. Add Some page, home, blog, add-review, services, my-review
+4. add some most section, video, slider, footer, FaQ,
+5. logo, favicon, unic button, unic links
 
 
 ### `npm start`
