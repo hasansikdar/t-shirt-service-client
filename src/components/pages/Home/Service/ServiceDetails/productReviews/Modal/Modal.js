@@ -11,7 +11,7 @@ const Modal = () => {
         const updatevalue = form.updatevalue.value;
 
 
-        fetch(`http://localhost:5000/updateReview/${reviewItem?._id}`, {
+        fetch(`https://t-shirt-server.vercel.app/updateReview/${reviewItem?._id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',

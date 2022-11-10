@@ -14,7 +14,7 @@ const Services = () => {
     const handleRemoveService = id => {
         const agreeDelete = window.confirm('Are You sure you want to delete ?')
         if (agreeDelete) {
-            fetch(`http://localhost:5000/services/${id}`, {
+            fetch(`https://t-shirt-server.vercel.app/services/${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())
@@ -33,7 +33,7 @@ const Services = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://t-shirt-server.vercel.app/services')
             .then(res => res.json())
             .then(data => {
                 setServices(data);

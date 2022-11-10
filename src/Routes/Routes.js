@@ -54,7 +54,7 @@ export const router = createBrowserRouter([
             {
                 path: '/services/:id',
                 element: <ServiceDetails></ServiceDetails>,
-                loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({params}) => fetch(`https://t-shirt-server.vercel.app/services/${params.id}`)
             },
             {
                 path: '/myreviews',
@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
             {
                 path: '/modal/:id',
                 element: <Modal></Modal>,
-                loader: ({params}) => fetch(`http://localhost:5000/modal/${params.id}`)
+                loader: ({params}) => fetch(`https://t-shirt-server.vercel.app/modal/${params.id}`)
             }
         ]
     },

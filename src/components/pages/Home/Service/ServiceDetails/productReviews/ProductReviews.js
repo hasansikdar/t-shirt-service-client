@@ -19,7 +19,7 @@ const ProductReviews = ({ userReview, handleReviewDelete }) => {
     console.log(reviewupdate)
     const handleupdateReview = () => {
 
-        fetch(`http://localhost:5000/updateReview/${editId}`, {
+        fetch(`https://t-shirt-server.vercel.app/updateReview/${editId}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',

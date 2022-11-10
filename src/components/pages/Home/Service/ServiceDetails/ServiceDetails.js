@@ -30,7 +30,7 @@ const ServiceDetails = () => {
             serviceID: _id,
             userEmail: user?.email,
         }
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://t-shirt-server.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -50,7 +50,7 @@ const ServiceDetails = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/productReviews?serviceID=${_id}`)
+        fetch(`https://t-shirt-server.vercel.app/productReviews?serviceID=${_id}`)
             .then(res => res.json())
             .then(data => {
                 setProductReviewses(data);
@@ -62,7 +62,7 @@ const ServiceDetails = () => {
     const handleReviewDelete = id => {
         const agree = window.confirm('Are You sure You want Delete');
         if (agree) {
-            fetch(`http://localhost:5000/productReviews/${id}`, {
+            fetch(`https://t-shirt-server.vercel.app/productReviews/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

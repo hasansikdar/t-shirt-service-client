@@ -24,7 +24,7 @@ const AddService = () => {
             email: user?.email,
         }
 
-        fetch('http://localhost:5000/addService',{
+        fetch('https://t-shirt-server.vercel.app/addService',{
             method:'POST',
             headers: {
                 'content-type':'application/json',
