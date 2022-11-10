@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import AddService from '../components/pages/AddService/AddService';
 import Blog from '../components/pages/Blog/Blog';
 import Home from '../components/pages/Home/Home';
+import Modal from '../components/pages/Home/Service/ServiceDetails/productReviews/Modal/Modal';
 import ServiceDetails from '../components/pages/Home/Service/ServiceDetails/ServiceDetails';
 import Login from '../components/pages/Login/Login';
 import MyReviews from '../components/pages/MyReviews/MyReviews';
@@ -58,11 +59,18 @@ export const router = createBrowserRouter([
             {
                 path: '/myreviews',
                 element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
+            },
+            {
+                path: '/modal/:id',
+                element: <Modal></Modal>,
+                loader: ({params}) => fetch(`http://localhost:5000/modal/${params.id}`)
             }
         ]
     },
     {
         path: '*',
         element: <NotFound></NotFound>
-    }
+    },
+    
+   
 ])

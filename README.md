@@ -15,6 +15,7 @@ In the project directory, you can run:
 6. react-router-dom
 7. environment variabled
 8. mongodb
+9. react-helmet-async
 
 ## Add Features
 1. login, registration, authentication

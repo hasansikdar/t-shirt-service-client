@@ -22,7 +22,7 @@ const Services = () => {
                     if (data.deletedCount > 0) {
                         toast("Service delete successful");
                         const remaining = services.filter(service => service._id !== id);
-                        setServices(remaining);
+                        
                     }
                 })
         }
