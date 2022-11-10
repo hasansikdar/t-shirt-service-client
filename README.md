@@ -6,6 +6,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+## Used Libary
+1. tailwind css
+2. DaisyUi
+3. react-photo-view
+4. react fond awesome icons
+5. firebase Authentication
+
+
+
 ### `npm start`
 
 Runs the app in the development mode.\
