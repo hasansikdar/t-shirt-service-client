@@ -1,12 +1,14 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updatePassword, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updatePassword, updateProfile } from 'firebase/auth';
 import app from '../../src/firebase/firebaseConfig';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export const AuthProvider = createContext(app);
 const auth = getAuth(app)
 const UserContext = ({ children }) => {
-    
+    // const navigate = useNavigate();
+
     const [user, SetUser] = useState(null);
     const [loading, setLoading] = useState(true);
     // const [loading, setLoading] = useState(true);
@@ -35,6 +37,9 @@ const UserContext = ({ children }) => {
         setLoading(true);
         return sendPasswordResetEmail(auth, email);
     }
+    const loginwithgoogle = (provider) =>{
+        return signInWithPopup(auth, provider);
+    }
 
 
     useEffect(() => {
@@ -49,7 +54,7 @@ const UserContext = ({ children }) => {
 
 
 
-    const authInfo = {loading, user, resetpassword, createUser, login, updateUserProfile, logout }
+    const authInfo = {loading, loginwithgoogle, user, resetpassword, createUser, login, updateUserProfile, logout }
     return (
         <AuthProvider.Provider value={authInfo}>
             {children}
