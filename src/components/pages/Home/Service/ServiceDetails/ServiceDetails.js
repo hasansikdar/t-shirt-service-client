@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { json, useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthProvider } from '../../../../../userContext/UserContext';
@@ -10,15 +11,15 @@ const ServiceDetails = () => {
     const { productName, productPhoto, productDetails, _id, productPrice, email } = service;
     const [productReviewses, setProductReviewses] = useState([]);
     const [loading, setLoading] = useState(true);
-   
+
 
     const handleAddReview = event => {
         event.preventDefault();
         const form = event.target;
         const rating = form.rating.value;
         const review = form.review.value;
-        
-        
+
+
 
         const userReview = {
             rating,
@@ -55,7 +56,7 @@ const ServiceDetails = () => {
             })
     }, [])
 
-     
+
 
     const handleReviewDelete = id => {
         const agree = window.confirm('Are You sure You want Delete');
@@ -81,7 +82,11 @@ const ServiceDetails = () => {
             <div className='flex'>
                 <div className="hero py-16 bg-base-200 w-9/12 ">
                     <div className="hero-content flex-col justify-between grid grid-cols-1 md:grid-cols-2  lg:flex-row">
-                        <img src={productPhoto} className="w-10/12 rounded-lg shadow-2xl" />
+                        <PhotoProvider>
+                            <PhotoView src={productPhoto}>
+                                <img src={productPhoto} className="w-10/12 rounded-lg shadow-2xl" />
+                            </PhotoView>
+                        </PhotoProvider>
                         <div className='w-10/12'>
                             <h1 className="text-5xl font-bold">{productName}</h1>
                             <p className="py-6">{productDetails}</p>

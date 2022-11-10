@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthProvider } from '../../../userContext/UserContext';
@@ -57,7 +58,11 @@ const Home = () => {
             }
             <div className="hero py-36 bg-base-200">
                 <div className="hero-content grid grid-cols-1 md:grid-cols-2">
-                    <img src="https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2022/05/Food-Deliver-Biker-Delivering-Food.jpg?q=50&fit=contain&w=1140&h=&dpr=1.5" />
+                    <PhotoProvider>
+                        <PhotoView src='https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2022/05/Food-Deliver-Biker-Delivering-Food.jpg?q=50&fit=contain&w=1140&h=&dpr=1.5'>
+                            <img src="https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2022/05/Food-Deliver-Biker-Delivering-Food.jpg?q=50&fit=contain&w=1140&h=&dpr=1.5" />
+                        </PhotoView>
+                    </PhotoProvider>
                     <div>
                         <h1 className="text-3xl font-bold">What Is the Best Food Delivery App for Android?</h1>
                         <p className="py-6">Online food delivery has been going on for a while but has really grown in popularity over the last few years. Now food delivery apps are essential because of their convenience and seamless dispatch.</p>
