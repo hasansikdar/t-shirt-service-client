@@ -49,7 +49,13 @@ const MyReviews = () => {
                     <button className="btn loading">loading</button>
                 </div>
                 :
-                myReviews.map(review => <ProductReviews handleReviewDelete={handleReviewDelete} kye={review._id} userReview={review}></ProductReviews>)
+                <>
+                    {myReviews.length === 0 ?
+                    <h1 className='text-3xl text-center mt-3'>No Reviews Available here</h1>
+                    :
+                    myReviews.map(review => <ProductReviews handleReviewDelete={handleReviewDelete} kye={review._id} userReview={review}></ProductReviews>)
+                    }
+                </>
             }
         </div>
     );
