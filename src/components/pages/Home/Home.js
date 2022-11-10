@@ -61,7 +61,7 @@ const Home = () => {
                     <div>
                         <h1 className="text-3xl font-bold">What Is the Best Food Delivery App for Android?</h1>
                         <p className="py-6">Online food delivery has been going on for a while but has really grown in popularity over the last few years. Now food delivery apps are essential because of their convenience and seamless dispatch.</p>
-                        <button className="btn btn-primary rounded">Read More</button>
+                        <a target="_blank" href="https://www.makeuseof.com/best-food-delivery-android-app/"><button className="btn btn-primary rounded">Read More</button></a>
                     </div>
                 </div>
             </div>
