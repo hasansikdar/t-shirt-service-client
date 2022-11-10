@@ -1,14 +1,25 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-const Service = () => {
+const Service = ({ service, handleRemoveService }) => {
+    const { productName, productPrice, _id, productPhoto, productDetails } = service;
+
+
+
+  
+
+
+
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
-                <img src="https://placeimg.com/400/225/arch" alt="Shoes" className="rounded-xl" />
+                <img src={productPhoto} alt="Shoes" className="rounded-xl" />
             </figure>
             <div className="card-body items-center text-center">
-                <h2 className="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
+                <h2 className="card-title">{productName}</h2>
+                <p>{productDetails.length > 100 && productDetails.slice(0, 100) + "..."}</p>
+                <h4>Price: ${productPrice}</h4>
                 <div className="rating">
                     <input type="radio" name="rating-1" className="mask mask-star" />
                     <input type="radio" name="rating-1" className="mask mask-star" checked />
@@ -16,8 +27,9 @@ const Service = () => {
                     <input type="radio" name="rating-1" className="mask mask-star" />
                     <input type="radio" name="rating-1" className="mask mask-star" />
                 </div>
-                <div className="card-actions">
-                    <button className="btn btn-primary">Buy Now</button>
+                <div className="card-actions mt-4">
+                    <Link to={`/services/${_id}`}><button className="btn btn-primary rounded">Details</button><br></br></Link>
+                    <button onClick={() => handleRemoveService(_id)} className="btn btn-error rounded">Remove</button>
                 </div>
             </div>
         </div>

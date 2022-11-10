@@ -1,10 +1,15 @@
-.App {
+
+.services-item  {
+  margin:auto;
   text-align: center;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.banner-section img {
+  height:100vh;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -27,6 +32,13 @@
 .App-link {
   color: #61dafb;
 }
+
+@media (max-width:768px){
+  .services-item  {
+    width:70%;
+  }
+}
+
 
 @keyframes App-logo-spin {
   from {

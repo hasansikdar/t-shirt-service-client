@@ -1,0 +1,10 @@
+.all-services {
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap:20px;
+    width:90%;
+    margin:auto;
+    padding:50px 0;
+}
+
+

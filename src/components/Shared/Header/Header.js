@@ -1,11 +1,38 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthProvider } from '../../../userContext/UserContext';
+import Service from '../../pages/Home/Service/Service';
+import { FaUserAlt } from "react-icons/fa";
+
 
 const Header = () => {
+    const { user, logout } = useContext(AuthProvider);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
+
+    const handleLogout = () => {
+        logout()
+            .then(res => {
+                navigate(from, { replace: true })
+            })
+            .then(error => console.log(error))
+    }
+
+
     return (
         <div className="navbar bg-base-100">
             <div className="flex-1">
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <Link to='/' className="btn btn-ghost normal-case text-xl">Food Delivery</Link>
+            </div>
+            <div className='me-auto text-center'>
+                <Link className='mr-3' to='/services'>Services</Link>
+                <Link to='/add-service' className='mx-5'>Add Service</Link>
+                <Link className='ml-2 mr-4' to='/myreviews'>My Reviews</Link>
+                <Link className='ml-2 mr-4' to='/blog'>Blog</Link>
+
             </div>
             <div>
                 <label className="swap swap-rotate">
@@ -34,19 +61,33 @@ const Header = () => {
                 </div>
                 <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img src="https://placeimg.com/80/80/people" />
+                        <div className="w rounded-full">
+                            {user?.email ?
+                                <img src={user?.photoURL} />
+                                :
+                                <FaUserAlt></FaUserAlt>
+                            }
                         </div>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li>
-                            <Link to='/profile' className="justify-between">
-                                Profile
-                                <span className="badge">New</span>
-                            </Link>
-                        </li>
-                        <li><a>Settings</a></li>
-                        <li><button>Logout</button></li>
+
+                        {user?.email ?
+
+                            <>
+                                <li>
+                                    <Link to='/profile' className="justify-between">
+                                        Profile
+                                        <span className="badge">{user?.displayName}</span>
+                                    </Link>
+                                </li>
+                                <li><button onClick={handleLogout}>Logout</button></li>
+                            </>
+                            :
+                            <>
+                                <li><Link to='/login'>Login</Link></li>
+                                <li><Link to='/register'>Create Account</Link></li>
+                            </>
+                        }
                     </ul>
                 </div>
             </div>
