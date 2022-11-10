@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthProvider } from '../../../userContext/UserContext';
 import {toast} from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const AddService = () => {
 
@@ -81,6 +82,9 @@ const AddService = () => {
                     </form>
                 </div>
             </div>
+            <Helmet>
+                <title>Add Service</title>
+            </Helmet>
         </div>
     );
 };

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { json, Link, useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -152,6 +153,9 @@ const ServiceDetails = () => {
                     }
                 </div>
             </div>
+            <Helmet>
+                <title>Service Details</title>
+            </Helmet>
         </div>
     );
 };

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-toastify';
 import { AuthProvider } from '../../../userContext/UserContext';
 import ProductReviews from '../Home/Service/ServiceDetails/productReviews/ProductReviews';
@@ -57,6 +58,9 @@ const MyReviews = () => {
                     }
                 </>
             }
+            <Helmet>
+                <title>My Reviews</title>
+            </Helmet>
         </div>
     );
 };

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthProvider } from '../../../userContext/UserContext';
 import {toast} from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const Profile = () => {
     const {user, updateUserProfile} = useContext(AuthProvider);
@@ -60,6 +61,9 @@ const Profile = () => {
                     </form>
                 </div>
             </div>
+            <Helmet>
+                <title>Profile Update</title>
+            </Helmet>
         </div>
     );
 };

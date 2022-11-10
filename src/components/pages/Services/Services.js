@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-toastify';
 import { AuthProvider } from '../../../userContext/UserContext';
 import Service from '../Home/Service/Service';
@@ -41,7 +42,6 @@ const Services = () => {
     }, [])
 
 
-
     return (
         <div className='w-11/12 mx-auto py-10'>
             <h1 className='text-4xl text-center mb-10'>Services</h1>
@@ -55,6 +55,9 @@ const Services = () => {
                     }
                 </div>
             }
+            <Helmet>
+                <title>Services</title>
+            </Helmet>
         </div>
     );
 };

@@ -7,12 +7,17 @@ import UserContext from './userContext/UserContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-photo-view/dist/react-photo-view.css';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <UserContext>
-      <App />
+      <HelmetProvider>
+        <App>
+          
+        </App>
+      </HelmetProvider>
     </UserContext>
     <ToastContainer />
   </React.StrictMode>

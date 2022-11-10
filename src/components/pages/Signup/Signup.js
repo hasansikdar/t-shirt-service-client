@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthProvider } from '../../../userContext/UserContext';
 import {toast} from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 
 const Signup = () => {
@@ -101,7 +102,9 @@ const Signup = () => {
                     </form>
                 </div>
             </div>
-            
+            <Helmet>
+                <title>Register</title>
+            </Helmet>
         </div>
     );
 };
