@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
-import { json, useLoaderData } from 'react-router-dom';
+import { json, Link, useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthProvider } from '../../../../../userContext/UserContext';
 import ProductReviews from './productReviews/ProductReviews';
@@ -95,11 +95,15 @@ const ServiceDetails = () => {
                     </div>
                 </div>
                 <div className='p-2'>
-                    <form onSubmit={handleAddReview} action="">
-                        <input type="text" placeholder="Rating Star ***" className="input w-full border-black	mb-2 max-w-xs rounded " required name="rating" />
-                        <input type="text" placeholder="Review Please" className="input w-full border-black	mb-2 max-w-xs rounded " required name="review" /><br></br>
-                        <button className="btn btn-active btn-primary rounded">Add Review</button>
-                    </form>
+                    {user?.email ?
+                        <form onSubmit={handleAddReview} action="">
+                            <input type="text" placeholder="Rating Star ***" className="input w-full border-black	mb-2 max-w-xs rounded " required name="rating" />
+                            <input type="text" placeholder="Review Please" className="input w-full border-black	mb-2 max-w-xs rounded " required name="review" /><br></br>
+                            <button className="btn btn-active btn-primary rounded">Add Review</button>
+                        </form>
+                        :
+                        <h1 className=''>Please Login Now For Add Review <br></br> <Link className='' to='/login'><button className='btn btn-info rounded'>Login</button></Link></h1>
+                    }
                 </div>
             </div>
             <div className='py-9 pl-5'>
