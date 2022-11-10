@@ -145,7 +145,9 @@ const ServiceDetails = () => {
                 </div>
                 <h3 className='border-b-2'>Reviews</h3>
                 <div>
-                    {
+                    {productReviewses.length === 0 ?
+                        <h1 className='text-center text-4xl mt-3'>Now Reviews Availabe!!</h1>
+                        :
                         productReviewses.map(review => <ProductReviews handleReviewDelete={handleReviewDelete} key={review._id} userReview={review}></ProductReviews>)
                     }
                 </div>

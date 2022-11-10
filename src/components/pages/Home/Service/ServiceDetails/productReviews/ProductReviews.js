@@ -13,7 +13,6 @@ const ProductReviews = ({ userReview, handleReviewDelete }) => {
             <p>Review: {review}</p><br></br>
             <button className="btn btn-sm btn-info mr-2 rounded">Edit</button>
             <button onClick={() => handleReviewDelete(_id)} className="btn btn-sm btn-error rounded">Delete</button>
-
         </div>
     );
 };
