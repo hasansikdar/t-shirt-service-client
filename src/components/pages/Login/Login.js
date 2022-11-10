@@ -3,7 +3,7 @@ import { AuthProvider } from '../../../userContext/UserContext';
 import { ToastContainer, toast } from 'react-toastify';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { GoogleAuthProvider } from 'firebase/auth';
-
+import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
     const { user, loginwithgoogle, resetpassword, login } = useContext(AuthProvider);
@@ -93,7 +93,7 @@ const Login = () => {
                             <button className="btn btn-primary rounded">Login</button>
                         </div>
                     </form>
-                    <button onClick={() => loginwithgoogle(googleprovider)} className="btn btn-secondary rounded w-10/12 mx-auto mb-10">Google</button>
+                    <button onClick={() => loginwithgoogle(googleprovider)} className="btn btn-secondary rounded w-10/12 mx-auto mb-10"><FaGoogle className='mr-4'></FaGoogle> Google</button>
                 </div>
             </div>
         </div>
