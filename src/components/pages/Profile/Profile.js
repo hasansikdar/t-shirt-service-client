@@ -2,29 +2,58 @@ import React, { useContext } from 'react';
 import { AuthProvider } from '../../../userContext/UserContext';
 import {toast} from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
     const {user, updateUserProfile} = useContext(AuthProvider);
 
+    const navigate = useNavigate();
 
     const handleUpdate = event =>{
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
-        const photoUrl = form.photoUrl.value;
+        const image = form.image.files[0];
         
-        const profileInfo = {
-            displayName:name,
-            photoURL:photoUrl,
-        }
-        
-        updateUserProfile(profileInfo)
-        .then(res => {
-            form.reset();
-            alert('Profile Update Success');
-            toast.success("User Profile Updated");
+        //upload photo in imgbb
+        const formData = new FormData();
+        formData.append('image', image);
+
+        const url = 'https://api.imgbb.com/1/upload?key=20479324d2295d17d9027f196b869026';
+        fetch(url, {
+            method: 'POST',
+            body: formData,
         })
-        .then(error => toast(error.message))
+        .then(res => res.json())
+        .then(data => {
+            const profileInfo = {
+                displayName: name,
+                photoURL: data?.data?.display_url,
+            }
+            updateUserProfile(profileInfo)
+            .then(res => {
+                toast.success('Profile Update Success');
+                form.reset();
+                navigate('/')
+            })
+            .catch(error => console.log(error))
+
+        })
+        .catch(error => console.log(error))
+
+
+        // const profileInfo = {
+        //     displayName:name,
+        //     photoURL:photoUrl,
+        // }
+        
+        // updateUserProfile(profileInfo)
+        // .then(res => {
+        //     form.reset();
+        //     alert('Profile Update Success');
+        //     toast.success("User Profile Updated");
+        // })
+        // .then(error => toast(error.message))
 
     }
 
@@ -45,9 +74,9 @@ const Profile = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Photo Url</span>
+                                <span className="label-text">Upload Photo</span>
                             </label>
-                            <input name="photoUrl" defaultValue={user?.photoURL}  type="text" placeholder="Photo Url" className="input input-bordered" />
+                            <input name="image"  type="file" accept='image/*' className="" />
                         </div>
                         <div className="form-control">
                             <label className="label">

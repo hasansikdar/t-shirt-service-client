@@ -1,45 +1,61 @@
 import React, { useContext } from 'react';
 import { AuthProvider } from '../../../userContext/UserContext';
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
 
 const AddService = () => {
 
-    const {user} = useContext(AuthProvider);
+    const { user } = useContext(AuthProvider);
 
 
-    const handleProductAdd = event =>{
+    const handleProductAdd = event => {
         event.preventDefault();
         const form = event.target;
         const productName = form.productName.value;
-        const productPhoto = form.productPhoto.value;
+        const productPhoto = form.productPhoto.files[0];
         const productPrice = form.productPrice.value;
         const productDetails = form.productDetails.value;
 
-        const service = {
-            productName,
-            productPhoto,
-            productPrice,
-            productDetails,
-            email: user?.email,
-        }
 
-        fetch('https://t-shirt-server.vercel.app/addService',{
-            method:'POST',
-            headers: {
-                'content-type':'application/json',
-            },
-            body: JSON.stringify(service)
+        // upload photo 
+        const formData = new FormData();
+        formData.append('image', productPhoto);
+        const url = "https://api.imgbb.com/1/upload?key=20479324d2295d17d9027f196b869026";
+        fetch(url, {
+            method: 'POST',
+            body: formData,
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data.acknowledged){
-                form.reset();
-                toast.success("service Added Successful");
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
 
+                // send service product data in server 
+                const service = {
+                    productName,
+                    productPhoto: data?.data?.display_url,
+                    productPrice,
+                    productDetails,
+                    email: user?.email,
+                }
+                fetch('https://t-shirt-server.vercel.app/addService', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                    body: JSON.stringify(service)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.acknowledged) {
+                            form.reset();
+                            toast.success("service Added Successful");
+                        }
+                    })
+
+
+            })
+            .catch(error => console.log(error))
     }
+
 
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -59,7 +75,7 @@ const AddService = () => {
                             <label className="label">
                                 <span className="label-text">Service Photo Url</span>
                             </label>
-                            <input name="productPhoto" type="text" placeholder="Photo Url" className="input input-bordered" />
+                            <input name="productPhoto" type="file" className="" />
                         </div>
                         <div className="form-control">
                             <label className="label">
