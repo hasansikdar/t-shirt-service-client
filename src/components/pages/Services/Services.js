@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-toastify';
@@ -6,9 +7,37 @@ import Service from '../Home/Service/Service';
 import './Services.css';
 
 const Services = () => {
+    const { user, logout } = useContext(AuthProvider);
     const [services, setServices] = useState([]);
-    const { user } = useContext(AuthProvider);
     const [loading, setLoading] = useState(true);
+
+
+    
+
+    // useEffect(() => {
+    //     fetch(`https://t-shirt-server.vercel.app/services?email=${user?.email}`, {
+    //         headers: {
+    //             authorization: `bearer ${localStorage.getItem('accessToken')}`
+    //         }
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setServices(data);
+    //             setLoading(false);
+    //         })
+    // }, [user?.email])
+    
+    // const { data: services = [], loading } = useQuery({
+    //     queryKey: ['services', user?.email],
+    //     queryFn: async () => {
+    //         const res = await fetch(`https://t-shirt-server.vercel.app/services?email=${user?.email}`);
+    //         const data = await res.json();
+    //         console.log(data);
+    //         return data;
+    //     }
+    // })
+
+
 
 
     const handleRemoveService = id => {
@@ -22,24 +51,38 @@ const Services = () => {
                     if (data.deletedCount > 0) {
                         toast("Service delete successful");
                         const remaining = services.filter(service => service._id !== id);
-                        
+
                     }
                 })
         }
     }
 
-
-
-
-
-    useEffect(() => {
-        fetch('https://t-shirt-server.vercel.app/services')
+ useEffect(() => {
+        fetch(`https://t-shirt-server.vercel.app/services?email=${user?.email}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
+
                 setServices(data);
                 setLoading(false);
             })
-    }, [])
+    }, [user?.email])
+
+    // const { data: services = [], loading } = useQuery({
+    //     queryKey: ['services', user?.email],
+    //     queryFn: async () => {
+    //         const res = await fetch(`https://t-shirt-server.vercel.app/services?email=${user?.email}`);
+    //         const data = await res.json();
+    //         console.log(data);
+    //         return data;
+    //     }
+    // })
+
+
+
 
 
     return (

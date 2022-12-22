@@ -13,7 +13,7 @@ const Service = ({ service, handleRemoveService }) => {
 
 
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card bg-base-100 shadow-2xl hover:shadow-xl cursor-pointer">
             <figure className="px-10 pt-10">
                 <PhotoProvider>
                     <PhotoView src={productPhoto}>

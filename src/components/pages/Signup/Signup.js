@@ -5,6 +5,10 @@ import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
 
 
+
+
+
+
 const Signup = () => {
     const { user, createUser, updateUserProfile } = useContext(AuthProvider);
     const navigate = useNavigate();
@@ -60,6 +64,9 @@ const Signup = () => {
             })
 
     }
+
+
+    
 
     //     createUser(email, password)
     //     .then(res => {

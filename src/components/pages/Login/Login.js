@@ -37,9 +37,7 @@ const Login = () => {
         login(email, password)
             .then(res => {
                 form.reset();
-                toast.success('Login Success');
-                navigate(from, { replace: true })
-
+                createJwtToken(email);
             })
             .catch(error => {
                 setError(error.message)
@@ -61,6 +59,27 @@ const Login = () => {
         }
 
     }
+
+
+    
+    const createJwtToken = email => {
+        fetch('https://t-shirt-server.vercel.app/jwt', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify({email})
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.accessToken){
+                localStorage.setItem('accessToken', data.accessToken);
+                toast.success('Login Success');
+                navigate(from, { replace: true })
+            }
+        })
+    }
+
 
 
     return (

@@ -58,10 +58,10 @@ const AddService = () => {
 
 
     return (
-        <div className="hero min-h-screen bg-base-200">
-            <div className="hero-content flex-col ">
+        <div className="min-h-screen bg-base-200">
+            <div className="hero-content flex-col pt-10">
                 <div className="text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Add Services</h1>
+                    <h1 className="text-5xl font-bold mb-4">Add Services</h1>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleProductAdd} className="card-body">
@@ -87,7 +87,7 @@ const AddService = () => {
                             <label className="label">
                                 <span className="label-text">Service Description</span>
                             </label>
-                            <textarea name="productDetails" placeholder='Service Description' className='p-3' id="" cols="30" rows="10"></textarea>
+                            <textarea name="productDetails" placeholder='Service Description' className='p-3' id="" cols="30" rows="5"></textarea>
                             <label className="label">
                                 <p>Error Message</p>
                             </label>

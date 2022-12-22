@@ -35,7 +35,14 @@
 
 @media (max-width:768px){
   .services-item  {
-    width:70%;
+    width:90%;
+  }
+  .video-section {
+    width:90%;
+    margin:auto;
+  }
+  .video-section .iframe-video {
+    height:300px !important;
   }
 }
 

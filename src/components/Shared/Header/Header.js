@@ -23,11 +23,24 @@ const Header = () => {
 
 
     return (
-        <div className="navbar bg-base-100">
-            <div className="flex-1">
-                <Link to='/' className="btn btn-ghost normal-case text-xl">Food Delivery</Link>
+        <div className="navbar bg-base-100 w-11/12 mx-auto">
+            {/* responsive */}
+            <div className="dropdown">
+                <label tabIndex={0} className="btn btn-ghost md:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                </label>
+                <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><Link className='' to='/services'>Services</Link></li>
+                    <li><Link to='/add-service' className=''>Add Service</Link></li>
+                    <li><Link className='' to='/myreviews'>My Reviews</Link></li>
+                    <li><Link className='' to='/blog'>Blog</Link></li>
+                </ul>
             </div>
-            <div className='me-auto text-center'>
+            <div className="flex-1">
+                <Link to='/' className="w-16 hover:shadow-lg rounded"><img className='w-full h-full' src="https://i.ibb.co/1qzDCgf/Logo.png" alt="" /></Link>
+            </div>
+
+            <div className='me-auto text-center hidden md:flex'>
                 <Link className='mr-3' to='/services'>Services</Link>
                 <Link to='/add-service' className='mx-5'>Add Service</Link>
                 <Link className='ml-2 mr-4' to='/myreviews'>My Reviews</Link>

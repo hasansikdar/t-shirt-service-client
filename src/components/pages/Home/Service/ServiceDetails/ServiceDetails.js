@@ -80,16 +80,16 @@ const ServiceDetails = () => {
 
     return (
         <div>
-            <div className='flex'>
-                <div className="hero py-16 bg-base-200 w-9/12 ">
-                    <div className="hero-content flex-col justify-between grid grid-cols-1 md:grid-cols-2  lg:flex-row">
+            <div className='lg:flex'>
+                <div className="hero py-16 bg-base-200 lg:w-9/12 mx-auto">
+                    <div className="hero-content flex-col justify-between grid-cols-1 md:grid-cols-2 lg:flex-row">
                         <PhotoProvider>
                             <PhotoView src={productPhoto}>
                                 <img src={productPhoto} className="w-10/12 rounded-lg shadow-2xl" />
                             </PhotoView>
                         </PhotoProvider>
                         <div className='w-10/12'>
-                            <h1 className="text-5xl font-bold">{productName}</h1>
+                            <h1 className="text-2xl lg:text-5xl font-bold">{productName}</h1>
                             <p className="py-6">{productDetails}</p>
                             <button className="btn btn-primary">Buy Now</button>
                         </div>
@@ -109,7 +109,7 @@ const ServiceDetails = () => {
             </div>
             <div className='py-9 pl-5'>
                 <h1 className='text-5xl'>Ratings & Reviews of {productName}</h1>
-                <div className='flex my-3 py-5 border-4 w-1/4'>
+                <div className='flex my-3 py-5 border-4 w-1/4 hidden lg:flex px-4'>
                     <div>
                         <h1 className='text-3xl'>4.7/5</h1>
                     </div>
@@ -145,7 +145,7 @@ const ServiceDetails = () => {
                     </div>
                 </div>
                 <h3 className='border-b-2'>Reviews</h3>
-                <div>
+                <div className='w-11/12'>
                     {productReviewses.length === 0 ?
                         <h1 className='text-center text-4xl mt-3'>Now Reviews Availabe!!</h1>
                         :
